@@ -1,0 +1,75 @@
+<idea-plugin>
+  <id>tabs.id</id>
+  <name>Customizable Editor Tabs</name>
+  <version>1.0</version>
+  <vendor email="tktonjy@yahoo.com" url="https://www.linkedin.com/in/anton-kozudzhiyski-a677b01a7/">linkedin profile</vendor>
+
+  <description><![CDATA[
+      <b>Limit the length of Intellij editor tabs and customize their font, colors and borders.</b><br>
+      <p>You can configure the maximum number of characters to be displayed in the separate tabs<br>
+      starting from the beginning of the file names.</p>
+      <p>So the editor tabs will appear with uniform lengths like in most of the modern browsers and editors.<br></p>
+      <br>
+      <p>Option to make all the tabs with the same lengths.</p>
+      <p>Allow changing the Font of the editor tabs.</p>
+      <p>Allow making the selected editor tab appear Bold.</p>
+      <p>Option to display only the file name as tooltip when the mouse hovers over an editor tab.</p>
+      <p>Option to alternate background color of the neighbour tabs.</p>
+      <p>Option to space apart the tabs.</p>
+      <p>Option to display vertical border separating the tabs.</p>
+      <p>Option to set separate colors for the selected tab and the background ones.</p>
+      <p>Option to set separate colors for the Text of the selected tab and the background ones.</p>
+      <br>
+      <p>Some of the changes on the settings page require restart.</p>
+      <br>
+      <a href="https://paypal.me/AtanasBudinov"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"/></a>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      Feature: Make all tabs appear with uniform lengths even if their name length is less than the desired maximum.This way is easier to find them. <br>Mimicking the appearance of a browser.
+    ]]>
+  </change-notes>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
+  <idea-version since-build="202.6397.94"/>
+
+  <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <application-components>
+    <component>
+      <implementation-class>tabs.startupActivity.MyApplicationComponent</implementation-class>
+    </component>
+    <component>
+      <implementation-class>tabs.selectedTab.TabComponent</implementation-class>
+    </component>
+  </application-components>
+
+  <project-components>
+    <component>
+      <implementation-class>tabs.startupActivity.MyProjectComponent</implementation-class>
+    </component>
+  </project-components>
+
+  <extensions defaultExtensionNs="com.intellij">
+  <!--  <preloadingActivity implementation="tabs.startupActivity.MyPreloadingActivity"/> -->
+    <postStartupActivity implementation="tabs.startupActivity.MyPostStartupActivity"/>
+    <applicationConfigurable parentId="tools" instance="tabs.settings.AppSettingsConfigurable"
+                             id="tabs.settings.AppSettingsConfigurable"
+                             displayName="Customizable Editor Tabs"/>
+    <applicationService serviceImplementation="tabs.settings.AppSettingsState"/>
+    <applicationService serviceInterface="com.intellij.ui.ColorChooserService"
+                        serviceImplementation="tabs.settings.ColorChooserServiceImpl" overrides="true"/>
+  </extensions>
+
+  <!-- <applicationListeners>
+    <listener class="tabs.startupActivity.MyPreloadingActivity" topic="com.intellij.ide.AppLifecycleListener"
+              activeInHeadlessMode="true" activeInTestMode="false"/>
+  </applicationListeners> -->
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
