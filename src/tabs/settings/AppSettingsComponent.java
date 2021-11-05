@@ -2,6 +2,7 @@
 
 package tabs.settings;
 
+import com.intellij.ui.components.BrowserLink;
 import com.intellij.ui.components.JBCheckBox;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
@@ -24,6 +25,9 @@ public class AppSettingsComponent {
 
     private final JPanel myMainPanel;
     private final JBTextField maxEditorTabChars = new JBTextField();
+    private final BrowserLink donateLink =
+            new BrowserLink("Donate to my PayPal to support the continuous development of this plugin.", "https://paypal.me/AtanasBudinov");
+    private final JBCheckBox append3Dots = new JBCheckBox("Append \"…\" symbol to the file names in case they were cut to the specified limit.(*)");
     private final JBCheckBox fillWithSpaces = new JBCheckBox("Make all tabs appear with uniform lengths even if their length is less than the desired maximum. Works best with monospaced fonts.(*)");
     private final JBCheckBox displayOnlyFileName = new JBCheckBox("Display only file name in the editor tab tooltip (*)");
     private final JBCheckBox boldEditorTab = new JBCheckBox("Make the selected editor tab BOLD ");
@@ -75,7 +79,9 @@ public class AppSettingsComponent {
         populateAlternateMenu();
 
         myMainPanel = FormBuilder.createFormBuilder()
+                .addComponent(donateLink)
                 .addLabeledComponent(new JBLabel("Display max number of characters in the editor tabs: (*) "), maxEditorTabChars, 1, false)
+                .addComponent(append3Dots, 1)
                 .addComponent(fillWithSpaces, 1)
                 .addComponent(displayOnlyFileName, 1)
                 .addComponent(boldEditorTab, 1)
@@ -305,6 +311,12 @@ public class AppSettingsComponent {
         displayOnlyFileName.setSelected(newStatus);
     }
 
+    public boolean getAppend3Dots() {
+        return append3Dots.isSelected();
+    }
+    public void setAppend3Dots(boolean newStatus) {
+        append3Dots.setSelected(newStatus);
+    }
     public boolean getFillWithSpaces() {
         return fillWithSpaces.isSelected();
     }

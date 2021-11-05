@@ -44,6 +44,7 @@ public class AppSettingsConfigurable implements Configurable {
         boolean modified = !mySettingsComponent.getMaxNumberOfChars().equals(settings.maxNumOfChars);
         modified |= !mySettingsComponent.getTabsOffsetToTheRight().equals(settings.tabsOffsetToTheRight);
         modified |= mySettingsComponent.getDisplayOnlyFileName() != settings.displayOnlyFileName;
+        modified |= mySettingsComponent.getAppend3Dots() != settings.append3Dots;
         modified |= mySettingsComponent.getFillWithSpaces() != settings.fillWithSpaces;
         modified |= mySettingsComponent.getBoldEditorTab() != settings.boldEditorTab;
         modified |= mySettingsComponent.getVerticalBorder() != settings.verticalBorder;
@@ -76,6 +77,7 @@ public class AppSettingsConfigurable implements Configurable {
         settings.maxNumOfChars = mySettingsComponent.getMaxNumberOfChars();
         settings.tabsOffsetToTheRight = mySettingsComponent.getTabsOffsetToTheRight();
         settings.displayOnlyFileName = mySettingsComponent.getDisplayOnlyFileName();
+        settings.append3Dots = mySettingsComponent.getAppend3Dots();
         settings.fillWithSpaces = mySettingsComponent.getFillWithSpaces();
         settings.boldEditorTab = mySettingsComponent.getBoldEditorTab();
         settings.verticalBorder = mySettingsComponent.getVerticalBorder();
@@ -105,6 +107,7 @@ public class AppSettingsConfigurable implements Configurable {
         mySettingsComponent.setMaxNumberOfChars(settings.maxNumOfChars);
         mySettingsComponent.setTabsOffsetToTheRight(settings.tabsOffsetToTheRight);
         mySettingsComponent.setDisplayOnlyFileName(settings.displayOnlyFileName);
+        mySettingsComponent.setAppend3Dots(settings.append3Dots);
         mySettingsComponent.setFillWithSpaces(settings.fillWithSpaces);
         mySettingsComponent.setBoldEditorTab(settings.boldEditorTab);
         mySettingsComponent.setVerticalBorder(settings.verticalBorder);

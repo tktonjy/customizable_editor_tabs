@@ -38,6 +38,7 @@ public class Main implements Opcodes {
 
         System.setProperty("max_editor_tab_chars", "" + maxChars);
         System.setProperty("only_file_name_in_tooltip", "" + AppSettingsState.getInstance().displayOnlyFileName);
+        System.setProperty("append_3_dots", "" + AppSettingsState.getInstance().append3Dots);
         System.setProperty("fill_with_spaces", "" + AppSettingsState.getInstance().fillWithSpaces);
 
         ClassReader classReader;

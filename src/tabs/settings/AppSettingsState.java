@@ -48,6 +48,7 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
     public int selectedTextColor = Color.WHITE.getRGB();
     public int textColor = Color.BLACK.getRGB();
     public boolean textKeepOldTextColor;
+    public boolean append3Dots;
     public boolean fillWithSpaces;
 
     @Override
@@ -55,12 +56,12 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final AppSettingsState that = (AppSettingsState) o;
-        return fill == that.fill && displayOnlyFileName == that.displayOnlyFileName && boldEditorTab == that.boldEditorTab && verticalBorder == that.verticalBorder && overrideEditorTabsFont == that.overrideEditorTabsFont && overrideTabsColor == that.overrideTabsColor && overrideTextColorOfTabs == that.overrideTextColorOfTabs && selectedTabColor == that.selectedTabColor && tabsColor == that.tabsColor && textKeepOldColor == that.textKeepOldColor && selectedTextColor == that.selectedTextColor && textColor == that.textColor && textKeepOldTextColor == that.textKeepOldTextColor && fillWithSpaces == that.fillWithSpaces && Objects.equals(maxNumOfChars, that.maxNumOfChars) && Objects.equals(tabsOffsetToTheRight, that.tabsOffsetToTheRight) && Objects.equals(fontName, that.fontName) && Objects.equals(fontSize, that.fontSize) && Objects.equals(alternateTabsColor, that.alternateTabsColor);
+        return fill == that.fill && displayOnlyFileName == that.displayOnlyFileName && boldEditorTab == that.boldEditorTab && verticalBorder == that.verticalBorder && overrideEditorTabsFont == that.overrideEditorTabsFont && overrideTabsColor == that.overrideTabsColor && overrideTextColorOfTabs == that.overrideTextColorOfTabs && selectedTabColor == that.selectedTabColor && tabsColor == that.tabsColor && textKeepOldColor == that.textKeepOldColor && selectedTextColor == that.selectedTextColor && textColor == that.textColor && textKeepOldTextColor == that.textKeepOldTextColor && append3Dots == that.append3Dots && fillWithSpaces == that.fillWithSpaces && Objects.equals(maxNumOfChars, that.maxNumOfChars) && Objects.equals(tabsOffsetToTheRight, that.tabsOffsetToTheRight) && Objects.equals(fontName, that.fontName) && Objects.equals(fontSize, that.fontSize) && Objects.equals(alternateTabsColor, that.alternateTabsColor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maxNumOfChars, tabsOffsetToTheRight, fill, displayOnlyFileName, boldEditorTab, verticalBorder, overrideEditorTabsFont, fontName, fontSize, alternateTabsColor, overrideTabsColor, overrideTextColorOfTabs, selectedTabColor, tabsColor, textKeepOldColor, selectedTextColor, textColor, textKeepOldTextColor, fillWithSpaces);
+        return Objects.hash(maxNumOfChars, tabsOffsetToTheRight, fill, displayOnlyFileName, boldEditorTab, verticalBorder, overrideEditorTabsFont, fontName, fontSize, alternateTabsColor, overrideTabsColor, overrideTextColorOfTabs, selectedTabColor, tabsColor, textKeepOldColor, selectedTextColor, textColor, textKeepOldTextColor, append3Dots, fillWithSpaces);
     }
 
     public static AppSettingsState getInstance() {

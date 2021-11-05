@@ -147,26 +147,32 @@ public class TabsPainter {
 
         // the virtual file - full path
         final int hash = Objects.hashCode(tabInfo.getObject().toString());
-        originalTabTextColors.putIfAbsent(hash, tabInfo.getDefaultForeground());
+        final Color currentTextColor = tabInfo.getDefaultForeground();
+        if (currentTextColor != null) {
+            if (!currentTextColor.equals(new Color(AppSettingsState.getInstance().selectedTextColor)) &&
+                            !currentTextColor.equals(new Color(AppSettingsState.getInstance().textColor))) {
+                originalTabTextColors.put(hash, currentTextColor);
+            }
+        }
 
         final boolean keepOldTextColor = AppSettingsState.getInstance().textKeepOldTextColor;
 
-        final Color color;
+        final Color newColor;
         if (selected) {
-            color = new Color(AppSettingsState.getInstance().selectedTextColor);
+            newColor = new Color(AppSettingsState.getInstance().selectedTextColor);
         } else {// not selected
             final Color originalColor = originalTabTextColors.get(hash);
 
             if (originalColor != null && keepOldTextColor) {
                 // keep it
-                color = originalColor;
+                newColor = originalColor;
             } else {
-                color = new Color(AppSettingsState.getInstance().textColor);
+                newColor = new Color(AppSettingsState.getInstance().textColor);
             }
         }
 
-        if (!color.equals(tabInfo.getDefaultForeground())) {
-            tabInfo.setDefaultForeground(color);
+        if (!newColor.equals(currentTextColor)) {
+            tabInfo.setDefaultForeground(newColor);
         }
     }
 
@@ -217,7 +223,7 @@ public class TabsPainter {
         }
     }
 
-    public void remove(Integer hash) {
+    public void remove(int hash) {
         modifiedTabs.remove(hash);
         originalTabTextColors.remove(hash);
     }

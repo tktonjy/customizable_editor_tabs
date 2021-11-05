@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>tabs.id</id>
   <name>Customizable Editor Tabs</name>
-  <version>1.0</version>
+  <version>1.11</version>
   <vendor email="tktonjy@yahoo.com" url="https://www.linkedin.com/in/anton-kozudzhiyski-a677b01a7/">linkedin profile</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,7 @@
       starting from the beginning of the file names.</p>
       <p>So the editor tabs will appear with uniform lengths like in most of the modern browsers and editors.<br></p>
       <br>
+      <p>Option to append "…" symbol to the file names in case they were cut to the specified limit.</p>
       <p>Option to make all the tabs with the same lengths.</p>
       <p>Allow changing the Font of the editor tabs.</p>
       <p>Allow making the selected editor tab appear Bold.</p>
@@ -26,12 +27,12 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      Feature: Make all tabs appear with uniform lengths even if their name length is less than the desired maximum.This way is easier to find them. <br>Mimicking the appearance of a browser.
+      Bug fix: Editor tabs text color was not evaluated correctly when opening new projects.
     ]]>
   </change-notes>
 
   <!-- please see https://plugins.jetbrains.com/docs/intellij/build-number-ranges.html for description -->
-  <idea-version since-build="202.6397.94"/>
+  <idea-version since-build="211.5787.15"/>
 
   <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
        on how to target different products -->
